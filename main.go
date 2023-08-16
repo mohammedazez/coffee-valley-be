@@ -189,7 +189,7 @@ func registerUsers(c echo.Context) error {
 }
 
 func main() {
-	dsn := "host=floppy.db.elephantsql.com user=yffnrgkx password=EKOZpd-IXW3ZZN_nnG-wM2OGy7Sz4N4A dbname=yffnrgkx port=5432 sslmode=disable TimeZone=Asia/Jakarta"
+	dsn := "host=floppy.db.elephantsql.com user=yffnrgkx password=EKOZpd-IXW3ZZN_nnG-wM2OGy7Sz4N4A port=5432 sslmode=disable TimeZone=Asia/Jakarta"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		fmt.Println(err)
