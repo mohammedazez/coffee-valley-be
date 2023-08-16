@@ -48,7 +48,7 @@ type Document struct {
 
 type Users struct {
 	gorm.Model
-	ID       int    `gorm:"type:string;primary_key"`
+	ID       int    `gorm:"type:int;primary_key"`
 	FullName string `gorm:"type:varchar(100);null" json:"fullname"`
 	Email    string `gorm:"type:varchar(255);null" json:"email"`
 	Password string `gorm:"type:varchar(50);null" json:"password"`
@@ -189,7 +189,7 @@ func registerUsers(c echo.Context) error {
 }
 
 func main() {
-	dsn := "host=floppy.db.elephantsql.com user=yffnrgkx password=EKOZpd-IXW3ZZN_nnG-wM2OGy7Sz4N4A port=5432 sslmode=disable TimeZone=Asia/Jakarta"
+	dsn := "host=postgresql-140411-0.cloudclusters.net user=admin password=admin123 dbname=coffee-valley port=12539 sslmode=disable TimeZone=Asia/Jakarta"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		fmt.Println(err)
