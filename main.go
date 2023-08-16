@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
@@ -189,6 +190,7 @@ func registerUsers(c echo.Context) error {
 }
 
 func main() {
+	port := os.Getenv("GENERAL_APP_MAIN_PORT")
 	dsn := "host=postgresql-140411-0.cloudclusters.net user=admin password=admin123 dbname=coffee-valley port=12539 sslmode=disable TimeZone=Asia/Jakarta"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
@@ -220,5 +222,5 @@ func main() {
 	e.GET("/users", getUsers)
 	e.POST("/users", registerUsers)
 
-	e.Start(":8080")
+	e.Logger.Fatal(e.Start(":" + port))
 }
